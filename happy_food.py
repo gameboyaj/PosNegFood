@@ -3,13 +3,17 @@ import pandas as pd
 import joblib as jl
 import random
 
+# Define list of valid emojis
 happy = 'smile grinning grin smiley blush yum relieved smirk'.split()
 sad = 'unamused expressionless pensive cry sob'.split()
 
+# Load model and vectorizer
 v, model = jl.load('vectorizer'), jl.load('model')
 
+# Load the data
 df = pd.read_csv('yelp.csv').sample(20)
 
+# The front-end
 st.markdown('# Yelp Sentiment Analysis')
 st.header("Created using SciKit-Learn's Random Forest Algorithm.")
 st.subheader('[The Dataset](https://www.kaggle.com/datasets/marklvl/sentiment-labelled-sentences-data-set)')
@@ -37,3 +41,17 @@ st.header('Random Data Sample (Reload to get new sample)')
 st.table(df)
 
 st.header('  ')
+
+# Hide the GitHub Repo Icon
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
